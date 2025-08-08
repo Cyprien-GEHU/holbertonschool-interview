@@ -3,26 +3,23 @@
 
 
 def canUnlockAll(boxes) :
-    if not boxes:
-        return False
-    elif boxes[0] is None:
+    if not boxes or boxes[0] is None:
         return False
     
     lenght_boxes = len(boxes)
-    first_box = boxes[0]
+    keys = boxes[0][:]
     open_box = {0}
 
     def check_box(index):
-        if index in open_box:
-            return
-        open_box.add(index)
-        for key in boxes[index]:
-            if 0 <= key < lenght_boxes:
-                check_box(key)
+        if index not in open_box:
+            open_box.add(index)
+            keys.extend(boxes[index])
+        
 
-    while first_box:
-        box = first_box.pop()
-        check_box(box)
+    while keys:
+        box = keys.pop()
+        if 0 <= box < lenght_boxes:
+            check_box(box)
 
 
 
