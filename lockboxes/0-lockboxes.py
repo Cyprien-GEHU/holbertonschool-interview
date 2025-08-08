@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+''' method DPS determines if all box can be opened'''
 def canUnlockAll(boxes) :
     if not boxes:
         return False
