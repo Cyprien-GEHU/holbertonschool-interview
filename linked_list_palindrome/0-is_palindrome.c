@@ -38,26 +38,34 @@ listint_t *copy_reverse_list(listint_t *head)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *rev, *cur;
+	listint_t *rev, *cur, *to_free;
+	int result = 1;
 
 	if (!head || !*head || !(*head)->next)
 		return (1);
 
 	rev = copy_reverse_list(*head);
 	cur = *head;
+	to_free = rev; /* Garder le début de la liste inversée */
 
 	while (cur && rev)
 	{
 		if (cur->n != rev->n)
 		{
-			free_listint(rev);
-			return (0);
+			result = 0;
+			break;
 		}
 		cur = cur->next;
 		rev = rev->next;
 	}
 
-	free_listint(rev);
+	/* Libérer la liste inversée */
+	while (to_free)
+	{
+		listint_t *tmp = to_free->next;
+		free(to_free);
+		to_free = tmp;
+	}
 
-	return (1);
+	return (result);
 }
