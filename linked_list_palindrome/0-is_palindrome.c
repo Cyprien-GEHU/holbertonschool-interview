@@ -38,7 +38,7 @@ listint_t *copy_reverse_list(listint_t *head)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *rev, *cur, *to_free;
+	listint_t *rev, *cur;
 	int result = 1;
 
 	if (!head || !*head || !(*head)->next)
@@ -46,7 +46,6 @@ int is_palindrome(listint_t **head)
 
 	rev = copy_reverse_list(*head);
 	cur = *head;
-	to_free = rev; /* Garder le début de la liste inversée */
 
 	while (cur && rev)
 	{
@@ -60,12 +59,12 @@ int is_palindrome(listint_t **head)
 	}
 
 	/* Libérer la liste inversée */
-	while (to_free)
+	while (rev)
 	{
-		listint_t *tmp = to_free->next;
+		listint_t *tmp = rev->next;
 
-		free(to_free);
-		to_free = tmp;
+		free(rev);
+		rev = tmp;
 	}
 
 	return (result);
