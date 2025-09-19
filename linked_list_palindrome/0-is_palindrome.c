@@ -52,6 +52,7 @@ int is_palindrome(listint_t **head)
 		if (cur->n != rev->n)
 		{
 			result = 0;
+			free_listint(rev);
 			break;
 		}
 		cur = cur->next;
