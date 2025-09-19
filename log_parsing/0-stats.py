@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+""" parse logs and return the number of error ans the size of the file"""
 import sys
 status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 total_size = 0
