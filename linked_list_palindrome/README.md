@@ -1,0 +1,1 @@
+# holberton school interview - linked list palindrome
