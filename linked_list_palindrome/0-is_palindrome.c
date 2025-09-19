@@ -63,6 +63,7 @@ int is_palindrome(listint_t **head)
 	while (to_free)
 	{
 		listint_t *tmp = to_free->next;
+
 		free(to_free);
 		to_free = tmp;
 	}
