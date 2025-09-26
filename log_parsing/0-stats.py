@@ -29,6 +29,13 @@ def read_line(line):
     return status_code, size_file
 
 
+def print_statusCode(total_size, code):
+    print(f'File size: {total_size}')
+    for status in sorted(SC):
+        if status in code:
+            print(f"{status}: {code[status]}")
+
+
 def stats():
     """the main function"""
 
@@ -48,13 +55,13 @@ def stats():
                 code[status_code] = code.get(status_code, 0) + 1
 
             if n_line % 10 == 0:
-                print(f'File size: {total_size}')
-                for status in sorted(SC):
-                    if status in code:
-                        print(f"{status}: {code[status]}")
+                print_statusCode(total_size, code)
 
     except KeyboardInterrupt:
         pass
+
+    finally:
+        print_statusCode(total_size, code)
 
 
 if __name__ == "__main__":
