@@ -3,7 +3,7 @@
 
 import sys
 
-SC = [200, 401, 403, 404, 405, 500]
+SC = [200, 301, 400, 401, 403, 404, 405, 500]
 
 
 def read_line(line):
@@ -12,15 +12,16 @@ def read_line(line):
     if not text:
         return None, None
 
-    try:
-        size_file = int(text[-1])
-    except (ValueError):
-        size_file = None
+    if len(text) >= 2:
+        try:
+            size_file = int(text[-1])
+        except (ValueError):
+            size_file = None
 
-    try:
-        status_code = int(text[-2])
-    except ValueError:
-        status_code = None
+        try:
+            status_code = int(text[-2])
+        except ValueError:
+            status_code = None
 
     else:
         return None, None
