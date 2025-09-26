@@ -12,16 +12,15 @@ def read_line(line):
     if not text:
         return None, None
 
-    if len(text) >= 2:
-        try:
-            size_file = int(text[-1])
-        except (ValueError):
-            size_file = None
+    try:
+        size_file = int(text[-1])
+    except (ValueError):
+        size_file = None
 
-        try:
-            status_code = int(text[-2])
-        except ValueError:
-            status_code = None
+    try:
+        status_code = int(text[-2])
+    except ValueError:
+        status_code = None
 
     else:
         return None, None
