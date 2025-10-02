@@ -8,32 +8,19 @@
 
 int is_palindrome(unsigned long n)
 {
-	char str_n[21];
-	char str_n_reverse[21];
-	int len, i;
+	unsigned long original = n;
+	unsigned long reverse = 0;
+	unsigned long digit;
 
-	sprintf(str_n, "%lu", n);
-	len = strlen(str_n);
-
-	if (len == 1)
+	while (n > 0)
 	{
+		digit = n % 10;
+		reverse = reverse * 10 + digit;
+		n = n / 10;
+	}
+
+	if (original == reverse)
 		return (1);
-	}
-
-	if (len >= 2)
-	{
-		for (i = 0; i < len; i++)
-		{
-			str_n_reverse[i] = str_n[len - 1 - i];
-		}
-		str_n_reverse[len] = '\0';
-
-		if (strcmp(str_n, str_n_reverse) == 0)
-		{
-			return (1);
-		}
+	else
 		return (0);
-	}
-
-	return (0);
 }
