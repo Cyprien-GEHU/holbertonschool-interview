@@ -9,7 +9,7 @@ def validUTF8(data):
     nBytes = 0
 
     for nb in data:
-        
+
         b = format(nb & 0xFF, "08b")
 
         if nBytes == 0:
@@ -26,7 +26,7 @@ def validUTF8(data):
         else:
             if not b.startswith('10'):
                 return False
-            
+
             nBytes -= 1
 
     return nBytes == 0
