@@ -33,6 +33,9 @@ void slide_right(int *line, size_t size)
 		if (line[i] != 0)
 			tempo[j++] = line[i];
 
+	if (j == 0)
+		return;
+
 	for (i = 0; i < j - 1; i++)
 	{
 		if (tempo[i] == tempo[i + 1] && tempo[i])
