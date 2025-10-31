@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 import sys
 
+
 def safe(row, col, solution):
     """see if the queen is safe"""
-    for r,c  in solution:
+    for r, c in solution:
         if c == col or abs(row - r) == abs(col - c):
             return False
     return True
@@ -41,7 +42,6 @@ def main():
     possibilty(N, 0, [], solutions)
     for result in solutions:
         print(result)
-
 
 
 if __name__ == "__main__":
