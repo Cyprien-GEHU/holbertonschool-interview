@@ -14,7 +14,8 @@ skiplist_t *range(skiplist_t *begin, skiplist_t *ending, int value)
 	{
 		printf("Value checked at index [%lu] = [%d]\n", begin->index, begin->n);
 		if (begin->n == value)
-			begin = begin->next;
+			return(begin);
+		begin = begin->next;
 	}
 	return (NULL);
 }
