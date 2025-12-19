@@ -33,22 +33,23 @@ void print_array(int *array, size_t size)
  */
 int advanced_binary_recur(int *array, size_t left, size_t right, int value)
 {
-	size_t middle;
+	size_t mid;
+
+	if (left > right)
+		return (-1);
 
 	print_array(array + left, right - left + 1);
 
-	if (left == right)
-	{
-		if (array[left] == value)
-			return (left);
-		return (-1);
-	}
+	mid = left + (right - left) / 2;
 
-	middle = left + (right - left) / 2;
-	if (array[middle] >= value)
-		return (advanced_binary_recur(array, left, middle, value));
+	if (array[mid] == value &&
+	   (mid == left || array[mid - 1] != value))
+		return (mid);
 
-	return (advanced_binary_recur(array, middle + 1, right, value));
+	if (array[mid] >= value)
+		return (advanced_binary_recur(array, left, mid - 1, value));
+
+	return (advanced_binary_recur(array, mid + 1, right, value));
 }
 
 
