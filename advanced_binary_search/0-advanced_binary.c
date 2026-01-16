@@ -33,25 +33,26 @@ void print_array(int *array, size_t size)
  */
 int advanced_binary_recur(int *array, size_t left, size_t right, int value)
 {
-	size_t mid;
+    if (!array || left > right)
+        return -1;
 
-	if (left > right)
-		return (-1);
+    print_array(array + left, right - left + 1);
 
-	mid = left + (right - left) / 2;
+    size_t middle = left + (right - left) / 2;
 
-	if (array[mid] == value &&
-	   (mid == left || array[mid - 1] != value))
-		return (mid);
-
-	print_array(array + left, right - left + 1);
-
-	if (array[mid] >= value)
-		return (advanced_binary_recur(array, left, mid - 1, value));
-
-	return (advanced_binary_recur(array, mid + 1, right, value));
+    if (array[middle] == value)
+    {
+        // Vérifier si c'est la première occurrence
+        if (middle == left || array[middle - 1] != value)
+            return middle;
+        // Chercher dans la moitié gauche excluant middle
+        return advanced_binary_recur(array, left, middle - 1, value);
+    }
+    else if (array[middle] < value)
+        return advanced_binary_recur(array, middle + 1, right, value);
+    else
+        return advanced_binary_recur(array, left, middle - 1, value);
 }
-
 
 /**
  * advanced_binary - Search a value an sorted array of interger
