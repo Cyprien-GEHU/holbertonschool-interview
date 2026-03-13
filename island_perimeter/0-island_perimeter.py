@@ -3,6 +3,7 @@
 the function for found the perimeter of the island on grid
 """
 
+
 def island_perimeter(grid):
     """
     function islande perimeter:
@@ -16,15 +17,15 @@ def island_perimeter(grid):
         for y in range(col):
             if grid[x][y] == 1:
                 # top
-                if  x == 0 or grid[x - 1][y] == 0:
+                if x == 0 or grid[x - 1][y] == 0:
                     count += 1
-                #left
-                if  y == 0 or grid[x][y - 1] == 0:
+                # left
+                if y == 0 or grid[x][y - 1] == 0:
                     count += 1
-                #right
+                # right
                 if y == col - 1 or grid[x][y + 1] == 0:
                     count += 1
-                #bottom
-                if x == row -  1 or grid[x + 1][y] == 0:
+                # bottom
+                if x == row - 1 or grid[x + 1][y] == 0:
                     count += 1
     return count
