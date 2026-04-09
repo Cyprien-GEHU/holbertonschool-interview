@@ -3,12 +3,13 @@
 The programme do a pascal triangle
 """
 
+
 def pascal_triangle(n):
     """ return a liste of pascal triangle"""
 
     if n <= 0:
         return []
-    
+
     tri = []
     i = 0
 
@@ -22,5 +23,5 @@ def pascal_triangle(n):
 
         tri.append(row)
         i += 1
-        
+
     return tri
