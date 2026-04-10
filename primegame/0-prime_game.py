@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+function to determine the winner on prime game
+"""
+
 
 def isWinner(x, nums):
     """
